@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
-// Define AdminPanel component
+
+
 function AdminPanel() {
   return (
     <div>
@@ -11,7 +12,7 @@ function AdminPanel() {
   );
 }
 
-// Define LoginForm component
+
 function LoginForm() {
   return (
     <div>
@@ -21,7 +22,7 @@ function LoginForm() {
   );
 }
 
-// Define the Profile component
+
 const user = {
   name: 'Hedy Lamarr',
   imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
@@ -45,9 +46,31 @@ function Profile() {
   );
 }
 
-// Main App Component
+
+const products = [
+  { title: 'Cabbage', isFruit: false, id: 1 },
+  { title: 'Garlic', isFruit: false, id: 2 },
+  { title: 'Apple', isFruit: true, id: 3 },
+];
+
+function ShoppingList() {
+  const listItems = products.map(product => (
+    <li
+      key={product.id}
+      style={{
+        color: product.isFruit ? 'magenta' : 'darkgreen',
+      }}
+    >
+      {product.title}
+    </li>
+  ));
+
+  return <ul>{listItems}</ul>;
+}
+
+
 export default function App() {
-  const isLoggedIn = false; // Change this value to test the conditional rendering
+  const isLoggedIn = false; 
 
   let content;
   if (isLoggedIn) {
@@ -63,6 +86,9 @@ export default function App() {
 
       {/* Render the Profile component */}
       <Profile />
+
+      {}
+      <ShoppingList />
     </div>
   );
 }
