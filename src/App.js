@@ -72,23 +72,23 @@ function ShoppingList() {
   return <ul>{listItems}</ul>;
 }
 
-// Define MyButton component with useState hook
-function MyButton() {
-  const [count, setCount] = useState(0);
-
-  function handleClick() {
-    setCount(count + 1);
-  }
-
+// Define MyButton component that shares the count state
+function MyButton({ count, onClick }) {
   return (
-    <button onClick={handleClick}>
+    <button onClick={onClick}>
       Clicked {count} times
     </button>
   );
 }
 
-// Main App Component
+// Main App Component (Now using shared count state for both buttons)
 export default function App() {
+  const [count, setCount] = useState(0); // Shared state for the buttons
+
+  function handleClick() {
+    setCount(count + 1); // Increment count and update both buttons
+  }
+
   const isLoggedIn = false; // Change this value to test the conditional rendering
 
   let content;
@@ -106,10 +106,10 @@ export default function App() {
       {/* Render the Profile component */}
       <Profile />
 
-      {/* Render multiple MyButton components with independent state */}
-      <h1>Counters that update separately</h1>
-      <MyButton />
-      <MyButton />
+      {/* Shared count state for both buttons */}
+      <h1>Counters that update together</h1>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
 
       {/* Render the ShoppingList component */}
       <ShoppingList />
