@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 // Define AdminPanel component
@@ -21,7 +21,7 @@ function LoginForm() {
   );
 }
 
-// Define the Profile component
+// Define the Profile component with useEffect
 const user = {
   name: 'Hedy Lamarr',
   imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
@@ -29,6 +29,11 @@ const user = {
 };
 
 function Profile() {
+  // useEffect hook to perform side effects
+  useEffect(() => {
+    console.log('Profile component rendered or updated');
+  }, []); // Empty array means this runs only once, when the component mounts
+
   return (
     <>
       <h1>{user.name}</h1>
@@ -67,7 +72,7 @@ function ShoppingList() {
   return <ul>{listItems}</ul>;
 }
 
-// Define MyButton component with state for individual counters
+// Define MyButton component with useState hook
 function MyButton() {
   const [count, setCount] = useState(0);
 
