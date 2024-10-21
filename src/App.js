@@ -1,10 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-
+import { useState } from 'react';
 
 import App from './App';
+function Square() {
+  const [value, setValue] = useState(null);
 
-function Square({ value }) {
   function handleClick() {
     console.log('clicked!');
   }
